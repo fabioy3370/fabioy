@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabio Yamagishi — Analista Administrativo e Financeiro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#F4EEE1;
+    --coral-2:#EAE1CC;
+    --navy:#181B32;
+    --navy-2:#22264A;
+    --lavender:#F3EEF6;
+    --purple:#6B4FA0;
+    --purple-dark:#54397F;
+    --ink:#191A2B;
+    --ink-soft:#5C5A6E;
+    --white:#FFFFFF;
+    --line:#E7E2ED;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Sora',sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--purple);
+    margin-bottom:14px;
+    display:block;
+  }
+  .eyebrow.on-dark{color:#C9B8E8;}
+  .eyebrow.on-coral{color:var(--purple);}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 28px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:14.5px;
+    border:2px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-filled{
+    background:var(--purple);
+    color:#fff;
+    box-shadow:0 12px 26px -12px rgba(107,79,160,0.65);
+  }
+  .btn-filled:hover{background:var(--purple-dark);}
+  .btn-outline{
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+  .btn-outline.on-dark{border-color:#fff;color:#fff;}
+  .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+
+  /* header */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:18px;}
+  .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--purple);}
+  nav{display:flex;gap:30px;}
+  nav a{font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .2s ease;}
+  nav a:hover{color:var(--purple);}
+  .nav-toggle{display:none;background:none;border:none;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;cursor:pointer;}
+  @media (max-width:760px){
+    nav{position:fixed;top:72px;left:0;right:0;background:#fff;flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .3s ease;border-bottom:1px solid var(--line);}
+    nav.open{max-height:320px;}
+    nav a{padding:16px 28px;border-top:1px solid var(--line);}
+    .nav-toggle{display:block;}
+  }
+
+  /* hero */
+  .hero{
+    background:var(--coral);
+    padding-top:72px;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-media{
+    width:100%;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-media img{
+    width:100%;height:100%;object-fit:cover;object-position:top center;
+  }
+  .hero-media::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(244,238,225,0) 55%, var(--coral) 100%);
+  }
+  .hero-body{
+    padding:44px 28px 72px;
+    max-width:640px;
+    margin:0 auto;
+    text-align:left;
+  }
+  .hero h1{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(34px,5.6vw,54px);
+    font-weight:400;
+    line-height:1.12;
+    color:var(--ink);
+    letter-spacing:-0.005em;
+  }
+  .hero h1 em{
+    font-family:'DM Serif Display',serif;
+    font-style:italic;
+    font-weight:400;
+    color:var(--purple);
+  }
+  .hero p.lead-text{
+    margin-top:18px;
+    font-size:17px;
+    color:#3A2C22;
+    max-width:52ch;
+  }
+  .hero-highlights{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    margin-top:32px;
+    padding-top:28px;
+    border-top:1px solid rgba(25,26,43,0.14);
+  }
+  .highlight{display:flex;align-items:center;gap:12px;}
+  .highlight-icon{
+    width:40px;height:40px;flex-shrink:0;
+    border-radius:12px;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 18px -12px rgba(25,26,43,0.35);
+  }
+  .highlight-icon svg{width:19px;height:19px;color:var(--purple);}
+  .highlight b{display:block;font-family:'Sora',sans-serif;font-size:17px;font-weight:700;color:var(--ink);}
+  .highlight span{display:block;font-size:12.5px;color:#5A4130;max-width:16ch;line-height:1.3;}
+  @media (min-width:900px){
+    .hero .wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      gap:48px;
+      padding-top:20px;
+    }
+    .hero-media{
+      aspect-ratio:4/5;
+      border-radius:28px;
+      order:2;
+    }
+    .hero-body{padding:64px 0;order:1;max-width:none;}
+  }
+
+  /* sections generic */
+  section{padding:88px 0;}
+  .section-title{
+    font-size:clamp(26px,3.6vw,36px);
+    font-weight:700;
+    line-height:1.18;
+    margin-bottom:18px;
+  }
+  .section-intro{color:var(--ink-soft);max-width:60ch;margin-bottom:48px;}
+  em{
+    font-style:italic;
+    color:var(--purple);
+    font-weight:600;
+  }
+  .on-dark em{color:#B79CE8;}
+
+  /* sobre - dark */
+  .sobre{background:var(--navy);color:#EDEAF6;}
+  .sobre .section-intro{color:#B9B6CC;}
+  .sobre p{margin-bottom:16px;color:#CFCBDD;font-size:16px;max-width:70ch;}
+  .sobre p.lead-p{
+    font-family:'Sora',sans-serif;
+    font-size:22px;
+    font-weight:600;
+    color:#fff;
+    line-height:1.45;
+    margin-bottom:28px;
+  }
+
+  /* fora do trabalho */
+  .fora{background:var(--lavender);}
+  .fora-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:18px;
+  }
+  .fora-card{
+    background:#fff;
+    border-radius:20px;
+    padding:28px 22px;
+    text-align:center;
+    box-shadow:0 14px 30px -20px rgba(24,27,50,0.25);
+  }
+  .fora-icon{
+    width:52px;height:52px;
+    border-radius:50%;
+    background:var(--lavender);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 16px;
+  }
+  .fora-icon svg{width:24px;height:24px;stroke:var(--purple);}
+  .fora-card p{font-size:14.5px;color:var(--ink-soft);font-weight:500;}
+  @media (max-width:860px){.fora-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:520px){.fora-grid{grid-template-columns:1fr;}}
+
+  .galeria{
+    margin:44px auto 0;
+    max-width:920px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 18px 40px -22px rgba(24,27,50,0.3);
+  }
+  .galeria img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  /* experiencia - cards */
+  .exp-grid{display:flex;flex-direction:column;gap:20px;}
+  .exp-card{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:26px;
+    align-items:start;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 16px 34px -26px rgba(24,27,50,0.3);
+  }
+  .exp-badge{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:16px;
+    background:linear-gradient(155deg, var(--coral), var(--purple));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Sora',sans-serif;font-weight:700;font-size:13px;
+    text-align:center;padding:10px;
+  }
+  .exp-eyebrow{font-size:12px;font-weight:600;color:var(--purple);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+  .exp-card h3{font-size:20px;font-weight:700;margin-bottom:8px;}
+  .exp-card p{color:var(--ink-soft);font-size:14.5px;}
+  @media (max-width:600px){.exp-card{grid-template-columns:64px 1fr;padding:20px;}}
+
+  /* competencias */
+  .comp-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .comp-card{
+    background:var(--lavender);
+    border-radius:20px;
+    padding:28px 24px;
+  }
+  .comp-card h3{
+    font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:16px;
+  }
+  .comp-card ul{list-style:none;}
+  .comp-card li{font-size:14.5px;padding:7px 0;border-top:1px solid #E4DCEE;color:var(--ink-soft);}
+  .comp-card li:first-child{border-top:none;}
+  @media (max-width:820px){.comp-grid{grid-template-columns:1fr;}}
+  .cv-cta{
+    margin-top:44px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:14px;
+    background:var(--lavender);
+    border-radius:24px;
+    padding:44px 28px;
+  }
+  .cv-cta h3{font-size:22px;font-weight:700;}
+  .cv-cta p{color:var(--ink-soft);max-width:44ch;}
+
+  /* carreira dark */
+  .carreira{background:var(--navy);color:#fff;}
+  .carreira-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .dev-card{
+    background:var(--navy-2);
+    border-radius:20px;
+    padding:30px;
+  }
+  .dev-icon{
+    width:48px;height:48px;border-radius:14px;
+    background:var(--purple);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .dev-icon svg{width:22px;height:22px;stroke:#fff;}
+  .dev-card h3{font-size:19px;font-weight:700;margin-bottom:10px;}
+  .dev-card p{color:#B9B6CC;font-size:14.5px;margin-bottom:18px;}
+  .bar{height:6px;border-radius:99px;background:#33365A;overflow:hidden;}
+  .bar i{display:block;height:100%;background:var(--coral);border-radius:99px;}
+  .bar-label{display:flex;justify-content:space-between;margin-top:8px;font-size:11.5px;color:#9490AC;}
+  @media (max-width:700px){.carreira-grid{grid-template-columns:1fr;}}
+
+  /* contato */
+  .contato{background:var(--coral);}
+  .contato .wrap{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;
+  }
+  .contato h2{color:var(--ink);}
+  .contact-list{margin-top:28px;}
+  .contact-row{
+    display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(25,26,43,0.18);font-weight:500;
+  }
+  .contact-row span:first-child{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#5A4130;}
+  .contato-portrait{
+    border-radius:24px;overflow:hidden;box-shadow:0 24px 50px -24px rgba(24,27,50,0.5);
+    aspect-ratio:4/5;max-width:320px;margin-left:auto;
+  }
+  .contato-portrait img{width:100%;height:100%;object-fit:cover;}
+  @media (max-width:800px){.contato .wrap{grid-template-columns:1fr;}.contato-portrait{margin:0 auto;}}
+
+  footer{background:var(--navy);color:#8B87A2;text-align:center;padding:28px 0;font-size:13px;}
+
+  /* panorama in sobre */
+  .panorama{margin-top:48px;border-radius:22px;overflow:hidden;box-shadow:0 20px 44px -22px rgba(0,0,0,0.5);position:relative;}
+  .panorama img{width:100%;height:auto;aspect-ratio:2220/710;object-fit:cover;}
+  .panorama figcaption{
+    position:absolute;left:18px;bottom:16px;background:rgba(24,27,50,0.75);backdrop-filter:blur(4px);
+    border-radius:999px;padding:7px 16px;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:#EDEAF6;
+  }
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Fabio Yamagishi</div>
+    <button class="nav-toggle" id="navToggle">Menu</button>
+    <nav id="nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#competencias">Competências</a>
+      <a href="#carreira">Carreira</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-media">
+      <img src="foto-hero.jpg" alt="Fabio Yamagishi">
+    </div>
+    <div class="hero-body">
+      <span class="eyebrow on-coral">Analista Administrativo e Financeiro</span>
+      <h1>Administração <em>inteligente</em> com base em Organização, foco e <em>análise clara</em> que geram valor e <em>insights</em> para decidir.</h1>
+      <p class="lead-text">Analista Administrativo e Financeiro com mais de 6 anos dedicados a rotinas financeiras e mais de 15 anos em administração generalista — contas a pagar e a receber, fluxo de caixa, conciliação bancária e gestão de contratos.</p>
+      <div class="hero-highlights">
+        <div class="highlight">
+          <div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg></div>
+          <div><b>+15</b><span>Anos em Administração</span></div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+          <div><b>+6</b><span>Anos como Analista Financeiro</span></div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg></div>
+          <div><b>Diversos</b><span>Vivência em setores diversificados</span></div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+          <div><b>Atualizado</b><span>Alinhado às novas tecnologias</span></div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a href="#contato" class="btn btn-filled">Falar comigo</a>
+        <a href="#experiencia" class="btn btn-outline">Ver experiência</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="sobre reveal">
+  <div class="wrap">
+    <span class="eyebrow on-dark">Quem sou eu</span>
+    <h2 class="section-title">Sobre</h2>
+    <p class="lead-p">Minha vivência acadêmica e profissional foi construída entre o interior e a capital: vivi em São Paulo por quase 10 anos e os demais em Atibaia. Essa mistura de origens e de cenários me deu repertório para lidar com pessoas e processos diferentes com naturalidade.</p>
+    <p>Nascido e criado em Atibaia, cidade a cerca de 50 minutos de São Paulo, sou um autêntico brasileiro — fruto de uma mistura de famílias imigrantes com descendência <em>japonesa, italiana, portuguesa e indígena</em>.</p>
+    <p>Passei os últimos 20 anos entre planilhas, contratos e pessoas — e é exatamente nesse cruzamento que encontro meu melhor trabalho.</p>
+    <p>Atuei em empresas de segmentos bem distintos entre si: saúde, turismo, indústria náutica e importação de bens e serviços especializados. Essa variedade me deu repertório para entender rotinas administrativas e financeiras sob ângulos distintos, com facilidade para me adaptar a novos processos, sistemas e equipes.</p>
+    <p>No dia a dia, sou responsável pelo contas a pagar e a receber, conciliação bancária em Excel e ERP, fluxo de caixa, planejamento financeiro, emissão de notas fiscais, bem como relatórios financeiros e de planejamento. Também atuei com folha de pagamento e benefícios, ponto eletrônico e tarefas ligadas ao DP.</p>
+    <div class="panorama">
+      <img src="foto-pedra-grande.jpg" alt="Vista panorâmica da Pedra Grande, em Atibaia, SP">
+      <figcaption>Pedra Grande — Atibaia, SP</figcaption>
+    </div>
+  </div>
+</section>
+
+<section class="fora reveal">
+  <div class="wrap">
+    <span class="eyebrow">Fora do escritório</span>
+    <h2 class="section-title">Um ser humano comum, em busca do equilíbrio entre qualidade de vida e desenvolvimento pessoal</h2>
+    <p class="section-intro">Um pouco além da planilha e do fluxo de caixa.</p>
+    <div class="fora-grid">
+      <div class="fora-card">
+        <div class="fora-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
+        <p>Vivo em um relacionamento estável, sem filhos</p>
+      </div>
+      <div class="fora-card">
+        <div class="fora-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5c-1.5-2-4-3-6-2 0 2 1 3.5 2.5 4.5C7 9 6 11 6 13c0 4 3 7 6 7s6-3 6-7c0-2-1-4-2.5-5.5C17 6.5 18 5 18 3c-2-1-4.5 0-6 2Z"/><circle cx="9.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="14.5" cy="12.5" r=".5" fill="currentColor"/></svg></div>
+        <p>Companhia de 2 gatos em casa</p>
+      </div>
+      <div class="fora-card">
+        <div class="fora-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16l20-8-8 20-3-8-9-4Z"/></svg></div>
+        <p>Gosto de viajar e conhecer lugares novos</p>
+      </div>
+      <div class="fora-card">
+        <div class="fora-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
+        <p>Amo praia, sol e verão</p>
+      </div>
+      <div class="fora-card">
+        <div class="fora-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.4c.7.6 1 1.5 1 2.4V17h6v-1.2c0-.9.3-1.8 1-2.4A6 6 0 0 0 12 3Z"/></svg></div>
+        <p>Curioso: sempre buscando aprender</p>
+      </div>
+    </div>
+    <div class="galeria">
+      <img src="galeria-pessoal.jpg" alt="Momentos pessoais de Fabio Yamagishi: em família, na praia, viajando e explorando novos lugares">
+    </div>
+  </div>
+</section>
+
+<section id="experiencia" class="reveal">
+  <div class="wrap">
+    <span class="eyebrow">Trajetória profissional</span>
+    <h2 class="section-title">Experiências</h2>
+    <p class="section-intro">Passei por empresas de setores e portes bem diferentes, que contribuíram para o crescimento de minha bagagem profissional e cultural, gerando desafios distintos.</p>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-badge">2025<br>2026</div>
+        <div>
+          <div class="exp-eyebrow">Saúde e cuidados a idosos · 1 ano</div>
+          <h3>Lar Vó Luzia Residencial Sênior</h3>
+          <p>Rotinas administrativas e financeiras no setor de saúde e cuidados a idosos.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-badge">2020<br>2025</div>
+        <div>
+          <div class="exp-eyebrow">Turismo · 5 anos</div>
+          <h3>Gold Trip Agência de Viagens</h3>
+          <p>Administrativo, financeiro e atendimento a clientes no setor de turismo.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-badge">2014<br>2020</div>
+        <div>
+          <div class="exp-eyebrow">Indústria náutica · 6 anos</div>
+          <h3>Flexboat Indústria Náutica</h3>
+          <p>Coordenador Administrativo atuando como suporte direto ao Depto. Comercial, gestão de Site, banco de dados, CRM e Mídia.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-badge">2004<br>2014</div>
+        <div>
+          <div class="exp-eyebrow">Importação e Comércio de Publicações Técnicas · 10 anos</div>
+          <h3>Alfa Periódicos Publicações Técnicas</h3>
+          <p>Assistente Administrativo generalista, contas a pagar e compras.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competencias" class="reveal">
+  <div class="wrap">
+    <span class="eyebrow">Minha vivência</span>
+    <h2 class="section-title">Competências &amp; Sistemas</h2>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3>Rotinas Financeiras</h3>
+        <ul>
+          <li>Contas a Pagar e a Receber</li>
+          <li>Folha de Pagamento</li>
+          <li>Conciliação Bancária</li>
+          <li>Fluxo de Caixa</li>
+          <li>Emissão de NFes</li>
+          <li>Planejamento Financeiro</li>
+          <li>Suporte ao Setor de Contabilidade</li>
+          <li>Relatórios Financeiros</li>
+        </ul>
+      </div>
+      <div class="comp-card">
+        <h3>Gestão &amp; Administração</h3>
+        <ul>
+          <li>Rotinas ADM / FIN / DP / RH</li>
+          <li>Gestão de Contratos</li>
+          <li>Gestão de Clientes</li>
+          <li>Controles Gerais (Excel e sistemas)</li>
+          <li>Análises e relatórios de desempenho</li>
+          <li>Gestão de projetos de Publicidade e Marketing</li>
+        </ul>
+      </div>
+      <div class="comp-card">
+        <h3>Sistemas &amp; Ferramentas</h3>
+        <ul>
+          <li>Microsoft 365 / Google Sheets</li>
+          <li>ERP Conta Azul</li>
+          <li>SAP (navegação e módulo FI)</li>
+          <li>CRM RD Station</li>
+          <li>ClickSign · ZapSign</li>
+          <li>Itaú, Caixa e Inter Empresas</li>
+          <li>ValePay · MercadoPago</li>
+          <li>Excel intermediário (caminhando para Avançado)</li>
+          <li>Ferramentas de I.A. (ChatGPT, Claude, Manus, Gemini)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-cta">
+      <h3>Quer ver tudo isso em um currículo?</h3>
+      <p>Baixe meu currículo completo em PDF, com formação, cursos e histórico profissional detalhado.</p>
+      <a class="btn btn-filled" href="https://drive.google.com/uc?export=download&id=1IPldxf-tXl2-0BgShtfwMeyTO8FU-y66" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 19h16"/></svg>
+        Baixar currículo em PDF
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="carreira" class="carreira reveal">
+  <div class="wrap">
+    <span class="eyebrow on-dark">Sempre aprendendo</span>
+    <h2 class="section-title">Em desenvolvimento</h2>
+    <p class="section-intro" style="color:#B9B6CC;">Duas frentes que considero essenciais para o financeiro de hoje.</p>
+    <div class="carreira-grid">
+      <div class="dev-card">
+        <div class="dev-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Excel Avançado</h3>
+        <p>Fórmulas, automações e análise de dados para tornar controles e relatórios financeiros mais rápidos e confiáveis.</p>
+        <div class="bar"><i style="width:70%"></i></div>
+        <div class="bar-label"><span>Em andamento</span><span>70%</span></div>
+      </div>
+      <div class="dev-card">
+        <div class="dev-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5c0 1.7-.8 2.7-1.6 3.6-.7.8-1.4 1.5-1.4 2.9v1H10v-1c0-1.4-.7-2.1-1.4-2.9C7.8 9.7 7 8.7 7 7a5 5 0 0 1 5-5Z"/><path d="M9.5 18h5M10 21h4"/></svg></div>
+        <h3>Inteligência Artificial</h3>
+        <p>Ferramentas de IA aplicadas à rotina administrativa e financeira — automação de análises e apoio à tomada de decisão.</p>
+        <div class="bar"><i style="width:55%"></i></div>
+        <div class="bar-label"><span>Aprofundando</span><span>55%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="contato reveal">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow on-coral">Vamos conversar</span>
+      <h2 class="section-title">Contato</h2>
+      <p style="color:#4A3626;max-width:44ch;">Estou aberto a novas oportunidades em administração generalista e Financeiro, me chame para conversarmos mais.</p>
+      <div class="contact-list">
+        <div class="contact-row"><span>WhatsApp</span><a href="https://wa.me/5511995373370" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
+        <div class="contact-row"><span>E-mail</span><a href="mailto:fabioy3370@gmail.com">Enviar mensagem</a></div>
+        <div class="contact-row"><span>LinkedIn</span><a href="https://www.linkedin.com/in/fabio-yamagishi" target="_blank" rel="noopener">linkedin.com/in/fabio-yamagishi</a></div>
+      </div>
+    </div>
+    <div class="contato-portrait">
+      <img src="foto-secundaria.jpg" alt="Fabio Yamagishi">
+    </div>
+  </div>
+</section>
+
+<footer>Fabio Yamagishi — Analista Administrativo e Financeiro</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  toggle && toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.addEventListener('click', ()=> nav.classList.remove('open'));
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
